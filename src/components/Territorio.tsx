@@ -1,7 +1,6 @@
 import Reveal from "./Reveal";
-import AnimatedMandala from "./AnimatedMandala";
 import ScrollWords from "./ScrollWords";
-import ElementosEmblem from "./ElementosEmblem";
+import MandalaElementos from "./MandalaElementos";
 
 export default function Territorio() {
   return (
@@ -47,33 +46,8 @@ export default function Territorio() {
         />
       </Reveal>
 
-      {/* 4 elementos huarpe — emblema unido e interactivo */}
-      <div className="huarpe">
-        <div className="huarpe__lines" />
-        <AnimatedMandala className="huarpe__mandala" />
-        <div className="huarpe__inner">
-          <Reveal>
-            <span className="huarpe__eyebrow">El origen del nombre</span>
-          </Reveal>
-          <ScrollWords
-            className="huarpe__head"
-            words={[
-              { text: "Cuatro", variant: "gold" },
-              { text: "elementos.", variant: "gold" },
-              { text: "Una", variant: "serif" },
-              { text: "lengua.", variant: "italic" },
-            ]}
-          />
-          <Reveal>
-            <p className="huarpe__lead">
-              En allentiac —la lengua del pueblo huarpe de Cuyo— nombramos lo que
-              nos sostiene. Cada hoja de nuestra marca es un elemento. Pasá el
-              cursor —o tocá— cada una.
-            </p>
-          </Reveal>
-          <ElementosEmblem />
-        </div>
-      </div>
+      {/* 4 elementos — mándala que se traza al scroll */}
+      <MandalaElementos />
     </section>
   );
 }

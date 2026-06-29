@@ -14,3 +14,5 @@ next-env.d.ts
 /_frames
 /_3d
 /_3d2
+
+.vercel

@@ -13,7 +13,7 @@ export default function Philosophy() {
       </Reveal>
       <div className="philosophy__grid">
         {principles.map((p, i) => (
-          <Reveal key={p.n} className="principle" delay={i * 110}>
+          <Reveal key={p.n} className="principle reveal--page" delay={i * 110}>
             <svg
               width="30"
               height="30"

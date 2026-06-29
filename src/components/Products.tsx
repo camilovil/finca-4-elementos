@@ -38,7 +38,7 @@ export default function Products() {
             { img: "/photos/caha-cerezas.webp", name: "Caha", meta: "Agua · Rosado" },
             { img: "/photos/homtec-piedra.webp", name: "Homtec", meta: "Aire · Tinto" },
           ].map((g, i) => (
-            <Reveal as="figure" key={g.name} className="gphoto" delay={i * 110}>
+            <Reveal as="figure" key={g.name} className="gphoto reveal--page" delay={i * 110}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={g.img} alt={`${g.name} — ${g.meta}`} />
               <figcaption>
@@ -118,7 +118,7 @@ export default function Products() {
         {/* fichas */}
         <div className="cards">
           {wineCards.map((c, i) => (
-            <Reveal as="article" key={c.name} className="card" delay={i * 120}>
+            <Reveal as="article" key={c.name} className="card reveal--page" delay={i * 120}>
               <div className="card__head">
                 <span className="card__dot" style={{ background: c.dot }} />
                 <h3>{c.name}</h3>

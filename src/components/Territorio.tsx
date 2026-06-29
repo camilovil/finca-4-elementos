@@ -1,8 +1,7 @@
 import Reveal from "./Reveal";
-import AnimatedLeaf from "./AnimatedLeaf";
 import AnimatedMandala from "./AnimatedMandala";
-import EditorialHeadline from "./EditorialHeadline";
-import { elements } from "@/data/site";
+import ScrollWords from "./ScrollWords";
+import ElementosEmblem from "./ElementosEmblem";
 
 export default function Territorio() {
   return (
@@ -12,7 +11,7 @@ export default function Territorio() {
         <Reveal>
           <span className="eyebrow">Territorio · Valle de Uco</span>
         </Reveal>
-        <EditorialHeadline
+        <ScrollWords
           className="territorio__head"
           words={[
             { text: "Vinos", variant: "serif" },
@@ -48,51 +47,31 @@ export default function Territorio() {
         />
       </Reveal>
 
-      {/* 4 elementos huarpe (inmersivo) */}
+      {/* 4 elementos huarpe — emblema unido e interactivo */}
       <div className="huarpe">
         <div className="huarpe__lines" />
         <AnimatedMandala className="huarpe__mandala" />
         <div className="huarpe__inner">
           <Reveal>
             <span className="huarpe__eyebrow">El origen del nombre</span>
-            <h2 className="serif">
-              <span className="display">Cuatro elementos.</span> Una lengua.
-            </h2>
+          </Reveal>
+          <ScrollWords
+            className="huarpe__head"
+            words={[
+              { text: "Cuatro", variant: "gold" },
+              { text: "elementos.", variant: "gold" },
+              { text: "Una", variant: "serif" },
+              { text: "lengua.", variant: "italic" },
+            ]}
+          />
+          <Reveal>
             <p className="huarpe__lead">
               En allentiac —la lengua del pueblo huarpe de Cuyo— nombramos lo que
-              nos sostiene. Cada hoja de nuestra marca es un elemento.
+              nos sostiene. Cada hoja de nuestra marca es un elemento. Pasá el
+              cursor —o tocá— cada una.
             </p>
           </Reveal>
-          <div className="huarpe__grid">
-            {elements.map((el, i) => (
-              <Reveal
-                key={el.word}
-                className="element"
-                delay={i * 100}
-                style={{ ["--el-color" as string]: el.dot }}
-              >
-                <div className="element__leaf">
-                  <AnimatedLeaf
-                    variant={
-                      el.word.toLowerCase() as
-                        | "te"
-                        | "qutec"
-                        | "caha"
-                        | "homtec"
-                    }
-                    height={112}
-                  />
-                </div>
-                <div className="element__info">
-                  <h3 className="serif" style={{ color: el.title }}>
-                    {el.word}
-                  </h3>
-                  <span className="element__el">{el.element}</span>
-                  <p className="element__desc">{el.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <ElementosEmblem />
         </div>
       </div>
     </section>

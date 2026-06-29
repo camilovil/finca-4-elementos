@@ -1,0 +1,16 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.pem
+.env*
+!.env.example
+next-env.d.ts
+/_handoff
+/_handoff2
+/_handoff3
+/_files
+/_frames
+/_3d
+/_3d2

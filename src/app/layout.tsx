@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant, Work_Sans, Anton } from "next/font/google";
+import { Cormorant, Work_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant({
@@ -17,11 +17,11 @@ const workSans = Work_Sans({
   display: "swap",
 });
 
-// Display condensado pesado para el wordmark gigante (estilo editorial)
-const anton = Anton({
+// Display serif editorial (estilo Monemvasia): variable, con óptico automático
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-anton",
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${cormorant.variable} ${workSans.variable} ${anton.variable}`}
+      className={`${cormorant.variable} ${workSans.variable} ${fraunces.variable}`}
     >
       <body>{children}</body>
     </html>

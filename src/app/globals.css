@@ -1341,7 +1341,7 @@ a {
   scroll-margin-top: 80px;
   background: var(--bg-alt);
   border-top: 1px solid var(--line);
-  padding: clamp(90px, 10vw, 130px) 44px;
+  padding: clamp(90px, 10vw, 130px) 44px clamp(40px, 5vw, 64px);
   overflow: hidden;
 }
 .productos__wrap {
@@ -1768,7 +1768,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(70px, 11vw, 150px) 20px;
+  padding: clamp(40px, 5vw, 70px) 20px clamp(80px, 11vw, 140px);
   overflow: hidden;
   text-align: center;
 }

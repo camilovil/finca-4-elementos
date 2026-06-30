@@ -49,9 +49,9 @@ export default function Reveal({
       ease: "none",
       scrollTrigger: {
         trigger: el,
-        start: `top ${90 - Math.min(delay / 40, 8)}%`,
-        end: "top 56%",
-        scrub: true,
+        start: `top ${88 - Math.min(delay / 50, 6)}%`,
+        end: "top 70%",
+        scrub: 0.6,
       },
     });
 

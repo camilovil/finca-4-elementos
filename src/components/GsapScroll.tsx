@@ -106,7 +106,20 @@ export default function GsapScroll() {
       ScrollTrigger.refresh();
     });
 
+    // recalcular posiciones cuando carguen fuentes/imágenes (evita reveals
+    // mal posicionados / secciones que parecen vacías)
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    const t1 = setTimeout(refresh, 600);
+    const t2 = setTimeout(refresh, 1600);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(refresh);
+    }
+
     return () => {
+      window.removeEventListener("load", refresh);
+      clearTimeout(t1);
+      clearTimeout(t2);
       ctx.revert();
       gsap.ticker.remove(tick);
       lenis.destroy();

@@ -1,4 +1,4 @@
-import SmoothScroll from "@/components/SmoothScroll";
+import GsapScroll from "@/components/GsapScroll";
 import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
 import Marquee from "@/components/Marquee";
@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <Preloader />
-      <SmoothScroll />
+      <GsapScroll />
       <CustomCursor />
       <div className="grain" aria-hidden="true" />
       <Marquee items={marqueeItems} />

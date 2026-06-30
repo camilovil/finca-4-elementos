@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef, type ElementType, type ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type RevealProps = {
   children: ReactNode;
@@ -11,8 +15,8 @@ type RevealProps = {
   id?: string;
 };
 
-// Revela el contenido al entrar en viewport (IntersectionObserver),
-// con un fallback de seguridad por si el observer no dispara.
+// Revelado continuo ligado al scroll (scrub): el contenido entra/sale a medida
+// que pasa por el viewport, sin cortes. Variante "reveal--page" = giro tipo hoja.
 export default function Reveal({
   children,
   as: Tag = "div",
@@ -27,35 +31,42 @@ export default function Reveal({
     const el = ref.current;
     if (!el) return;
 
-    if (delay) el.style.transitionDelay = `${delay}ms`;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(el, { autoAlpha: 1, clearProps: "transform" });
+      return;
+    }
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            (e.target as HTMLElement).classList.add("is-visible");
-            io.unobserve(e.target);
-          }
-        });
+    const page = className.includes("reveal--page");
+    const from = page
+      ? { autoAlpha: 0, y: 40, rotateY: -14, rotateX: 6 }
+      : { autoAlpha: 0, y: 46 };
+
+    const tw = gsap.fromTo(el, from, {
+      autoAlpha: 1,
+      y: 0,
+      rotateY: 0,
+      rotateX: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: el,
+        start: `top ${90 - Math.min(delay / 40, 8)}%`,
+        end: "top 56%",
+        scrub: true,
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
-    );
-    io.observe(el);
-
-    const safe = setTimeout(() => el.classList.add("is-visible"), 3200);
+    });
 
     return () => {
-      io.disconnect();
-      clearTimeout(safe);
+      tw.scrollTrigger?.kill();
+      tw.kill();
     };
-  }, [delay]);
+  }, [className, delay]);
 
   return (
     <Tag
       ref={ref}
       id={id}
       className={`reveal ${className}`.trim()}
-      style={style}
+      style={{ perspective: 1000, ...style }}
     >
       {children}
     </Tag>

@@ -1,38 +1,43 @@
 import Reveal from "./Reveal";
+import ScrollWords from "./ScrollWords";
 import { principles } from "@/data/site";
 
 export default function Philosophy() {
   return (
-    <section className="philosophy">
-      <Reveal className="philosophy__head">
+    <section className="filosofia">
+      <Reveal>
         <span className="eyebrow">Filosofía</span>
-        <h2 className="section-h2 serif">
-          <span className="display">Cuatro principios</span> sostienen cada
-          decisión que tomamos en la finca.
-        </h2>
       </Reveal>
-      <div className="philosophy__grid">
+
+      <ScrollWords
+        className="filosofia__head"
+        words={[
+          { text: "Cuatro", variant: "anton" },
+          { text: "principios", variant: "anton" },
+          { text: "sostienen", variant: "serif" },
+          { text: "cada", variant: "serif" },
+          { text: "decisión", variant: "anton" },
+          { text: "que", variant: "serif" },
+          { text: "tomamos", variant: "serif" },
+          { text: "en", variant: "serif" },
+          { text: "la", variant: "serif" },
+          { text: "finca.", variant: "italic" },
+        ]}
+      />
+
+      <div className="filosofia__list">
         {principles.map((p, i) => (
-          <Reveal key={p.n} className="principle reveal--page" delay={i * 110}>
-            <svg
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="principle__icon"
-            >
-              <path
-                d="M12 2.5C18 8 18 15.5 12 21.5C6 15.5 6 8 12 2.5Z"
-                fill={p.color}
-                fillOpacity={p.opacity}
-                stroke={p.color}
-                strokeWidth="1.3"
+          <Reveal key={p.n} className="fprin" delay={i * 90}>
+            <div className="fprin__l">
+              <span className="fprin__n">{p.n}</span>
+              <span
+                className="fprin__dot"
+                style={{ background: p.color }}
+                aria-hidden="true"
               />
-              <path d="M12 5.5V18.5" stroke={p.color} strokeWidth="1.1" />
-            </svg>
-            <span className="principle__n">{p.n}</span>
-            <h3 className="serif">{p.title}</h3>
-            <p>{p.text}</p>
+              <h3 className="fprin__name serif">{p.title}</h3>
+            </div>
+            <p className="fprin__text">{p.text}</p>
           </Reveal>
         ))}
       </div>

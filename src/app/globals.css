@@ -2542,6 +2542,116 @@ a {
   font-weight: 700;
 }
 
+/* ===================== CURSOR PERSONALIZADO ===================== */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  margin: -6px 0 0 -6px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 130;
+  opacity: 0;
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease,
+    opacity 0.3s ease;
+}
+.cursor.is-hover {
+  width: 48px;
+  height: 48px;
+  margin: -24px 0 0 -24px;
+}
+@media (hover: hover) and (pointer: fine) {
+  body.has-cursor,
+  body.has-cursor a,
+  body.has-cursor button,
+  body.has-cursor [role="button"],
+  body.has-cursor .winelist li,
+  body.has-cursor .mleaf {
+    cursor: none;
+  }
+}
+
+/* ===================== MAGNÉTICO ===================== */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+/* ===================== FOTO PARALLAX + CORTINA ===================== */
+.rimg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.rimg.in {
+  clip-path: inset(0 0 0 0);
+}
+.rimg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ===================== ÍNDICE DE VINOS · foto que sigue al cursor ===================== */
+.winefollow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 60;
+  width: min(240px, 34vw);
+  aspect-ratio: 3 / 4;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: none;
+}
+.winefollow__inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.85) rotate(-3deg);
+  transition: opacity 0.35s ease,
+    transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+}
+.winefollow.show .winefollow__inner {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+.winefollow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  animation: f4reveal 0.4s ease both;
+}
+@media (hover: hover) and (pointer: fine) {
+  .winefollow {
+    display: block;
+  }
+  .bottle-wrap {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rimg {
+    clip-path: none;
+  }
+  .magnetic {
+    transition: none;
+  }
+}
+
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 760px) {
   .nav {
@@ -2556,7 +2666,7 @@ a {
     top: 18vh;
   }
   .hero__bottle {
-    height: min(64vh, 540px);
+    height: min(56vh, 460px);
   }
   .hero__scroll {
     left: 22px;

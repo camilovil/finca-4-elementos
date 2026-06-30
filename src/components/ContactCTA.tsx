@@ -1,4 +1,5 @@
 import Reveal from "./Reveal";
+import Magnetic from "./Magnetic";
 import { site } from "@/data/site";
 
 export default function ContactCTA() {
@@ -14,9 +15,11 @@ export default function ContactCTA() {
           Trabajamos con una selección de vinotecas y restaurantes. Si querés
           sumar Finca 4 Elementos a tu carta, escribinos y conversamos.
         </p>
-        <a href={`mailto:${site.email}`} className="cta__btn btn-fill">
-          Escribir a distribución →
-        </a>
+        <Magnetic strength={0.4}>
+          <a href={`mailto:${site.email}`} className="cta__btn btn-fill">
+            Escribir a distribución →
+          </a>
+        </Magnetic>
         <p className="cta__fine">
           Fase institucional · todavía sin venta directa al consumidor final
         </p>

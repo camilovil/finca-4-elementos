@@ -1,4 +1,5 @@
 import SmoothScroll from "@/components/SmoothScroll";
+import CustomCursor from "@/components/CustomCursor";
 import Preloader from "@/components/Preloader";
 import Marquee from "@/components/Marquee";
 import Nav from "@/components/Nav";
@@ -25,6 +26,7 @@ export default function Home() {
     <>
       <Preloader />
       <SmoothScroll />
+      <CustomCursor />
       <div className="grain" aria-hidden="true" />
       <Marquee items={marqueeItems} />
       <Nav />

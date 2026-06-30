@@ -1,4 +1,6 @@
 import Reveal from "./Reveal";
+import ParallaxPhoto from "./ParallaxPhoto";
+import CountUp from "./CountUp";
 
 export default function About() {
   return (
@@ -22,27 +24,22 @@ export default function About() {
             numeradas a mano, para quienes buscan un vino con origen y con verdad.
           </p>
         </Reveal>
-        <Reveal
-          className="split__photo split__photo--earth split__photo--has-img"
-          delay={120}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="split__photo split__photo--earth">
+          <ParallaxPhoto
             src="/photos/vendimia.webp"
             alt="Vendimia en Finca 4 Elementos: cajones con uva recién cosechada entre las hileras"
           />
-        </Reveal>
+        </div>
       </div>
 
       {/* Cómo trabajamos */}
       <div className="split split--bordered">
-        <Reveal className="split__photo split__photo--soil split__photo--first split__photo--has-img">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="split__photo split__photo--soil split__photo--first">
+          <ParallaxPhoto
             src="/photos/vendimia-uvas.webp"
             alt="Uvas recién cosechadas en bins, con olivos y viñedo de fondo en el Valle de Uco"
           />
-        </Reveal>
+        </div>
         <Reveal className="split__text" delay={120}>
           <span className="eyebrow">Cómo trabajamos</span>
           <h2 className="section-h2 serif">
@@ -78,7 +75,9 @@ export default function About() {
         </Reveal>
         <Reveal className="limited__fig" delay={120}>
           <div className="limited__num serif">
-            500<span>–</span>1.000
+            <CountUp to={500} />
+            <span>–</span>
+            <CountUp to={1000} />
           </div>
           <p>
             botellas por añada y por varietal. No producimos más de lo que la

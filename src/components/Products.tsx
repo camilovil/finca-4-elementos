@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 import ParallaxWordmark from "./ParallaxWordmark";
 import { wines, wineCards, type Wine } from "@/data/site";
@@ -15,7 +15,39 @@ const wineImage: Record<Wine["key"], string> = {
 
 export default function Products() {
   const [active, setActive] = useState<Wine["key"]>("te");
+  const [following, setFollowing] = useState(false);
   const a = wines.find((w) => w.key === active) ?? wines[0];
+
+  // foto que sigue al cursor sobre el índice (desktop)
+  const followRef = useRef<HTMLDivElement>(null);
+  const pos = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
+
+  useEffect(() => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    let raf = 0;
+    const loop = () => {
+      const p = pos.current;
+      p.x += (p.tx - p.x) * 0.18;
+      p.y += (p.ty - p.y) * 0.18;
+      if (followRef.current) {
+        followRef.current.style.left = `${p.x.toFixed(1)}px`;
+        followRef.current.style.top = `${p.y.toFixed(1)}px`;
+      }
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  const onListMove = (e: React.MouseEvent) => {
+    pos.current.tx = e.clientX;
+    pos.current.ty = e.clientY;
+  };
+  const onListEnter = (e: React.MouseEvent) => {
+    pos.current.x = pos.current.tx = e.clientX;
+    pos.current.y = pos.current.ty = e.clientY;
+    setFollowing(true);
+  };
 
   return (
     <section id="productos" className="productos" data-screen-label="Productos">
@@ -51,7 +83,12 @@ export default function Products() {
 
         <div className="productos__main">
           {/* lista */}
-          <Reveal as="ul" className="winelist">
+          <ul
+            className="winelist"
+            onMouseEnter={onListEnter}
+            onMouseMove={onListMove}
+            onMouseLeave={() => setFollowing(false)}
+          >
             {wines.map((w) => {
               const available = w.status === "Disponible";
               return (
@@ -88,9 +125,9 @@ export default function Products() {
                 </li>
               );
             })}
-          </Reveal>
+          </ul>
 
-          {/* preview flotante de la botella activa */}
+          {/* preview fijo (mobile / sin hover) */}
           <div className="bottle-wrap">
             <div
               className="bottle"
@@ -136,6 +173,18 @@ export default function Products() {
               </dl>
             </Reveal>
           ))}
+        </div>
+      </div>
+
+      {/* foto que sigue al cursor (desktop) */}
+      <div
+        ref={followRef}
+        className={`winefollow${following ? " show" : ""}`}
+        aria-hidden="true"
+      >
+        <div className="winefollow__inner">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img key={active} src={wineImage[active]} alt="" />
         </div>
       </div>
     </section>

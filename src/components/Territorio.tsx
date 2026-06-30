@@ -1,5 +1,6 @@
 import Reveal from "./Reveal";
 import ScrollWords from "./ScrollWords";
+import ParallaxPhoto from "./ParallaxPhoto";
 import MandalaElementos from "./MandalaElementos";
 
 export default function Territorio() {
@@ -38,13 +39,12 @@ export default function Territorio() {
       </div>
 
       {/* paisaje del Valle de Uco */}
-      <Reveal className="territorio__photo">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+      <div className="territorio__photo">
+        <ParallaxPhoto
           src="/photos/finca-vinedo.webp"
           alt="Viñedo de Finca 4 Elementos en el Valle de Uco, con la casa de la finca y cielo despejado"
         />
-      </Reveal>
+      </div>
 
       {/* 4 elementos — mándala que se traza al scroll */}
       <MandalaElementos />

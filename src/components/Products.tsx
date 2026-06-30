@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Reveal from "./Reveal";
 import ParallaxWordmark from "./ParallaxWordmark";
+import Tilt from "./Tilt";
 import { wines, wineCards, type Wine } from "@/data/site";
 
 // foto por vino (preview flotante del índice) — shots propios de cada etiqueta
@@ -71,12 +72,14 @@ export default function Products() {
             { img: "/photos/homtec-piedra.webp", name: "Homtec", meta: "Aire · Tinto" },
           ].map((g, i) => (
             <Reveal as="figure" key={g.name} className="gphoto reveal--page" delay={i * 110}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={g.img} alt={`${g.name} — ${g.meta}`} />
-              <figcaption>
-                <span className="gphoto__name serif">{g.name}</span>
-                <span className="gphoto__meta">{g.meta}</span>
-              </figcaption>
+              <Tilt max={6} className="gphoto__tilt" data-cursor-label="ver">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={g.img} alt={`${g.name} — ${g.meta}`} />
+                <figcaption>
+                  <span className="gphoto__name serif">{g.name}</span>
+                  <span className="gphoto__meta">{g.meta}</span>
+                </figcaption>
+              </Tilt>
             </Reveal>
           ))}
         </div>
@@ -95,6 +98,7 @@ export default function Products() {
                 <li
                   key={w.key}
                   tabIndex={0}
+                  data-cursor-label="ver"
                   className={`${available ? "available" : "soon"}${
                     active === w.key ? " active" : ""
                   }`}
@@ -156,21 +160,23 @@ export default function Products() {
         <div className="cards">
           {wineCards.map((c, i) => (
             <Reveal as="article" key={c.name} className="card reveal--page" delay={i * 120}>
-              <div className="card__head">
-                <span className="card__dot" style={{ background: c.dot }} />
-                <h3>{c.name}</h3>
-                <span className="card__meta">{c.meta}</span>
-              </div>
-              <p className="card__quote">{c.quote}</p>
-              <p className="card__body">{c.body}</p>
-              <dl>
-                {c.specs.map((s) => (
-                  <Fragment key={s.label}>
-                    <dt>{s.label}</dt>
-                    <dd>{s.value}</dd>
-                  </Fragment>
-                ))}
-              </dl>
+              <Tilt max={5} className="card__tilt">
+                <div className="card__head">
+                  <span className="card__dot" style={{ background: c.dot }} />
+                  <h3>{c.name}</h3>
+                  <span className="card__meta">{c.meta}</span>
+                </div>
+                <p className="card__quote">{c.quote}</p>
+                <p className="card__body">{c.body}</p>
+                <dl>
+                  {c.specs.map((s) => (
+                    <Fragment key={s.label}>
+                      <dt>{s.label}</dt>
+                      <dd>{s.value}</dd>
+                    </Fragment>
+                  ))}
+                </dl>
+              </Tilt>
             </Reveal>
           ))}
         </div>

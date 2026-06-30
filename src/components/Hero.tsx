@@ -1,12 +1,30 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/data/site";
 import Typewriter from "./Typewriter";
 
 export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const mouseRef = useRef<HTMLDivElement>(null);
+  const [entered, setEntered] = useState(false);
+
+  // entrada orquestada: arranca cuando el preloader avisa que terminó
+  useEffect(() => {
+    const w = window as unknown as { __f4eReady?: boolean };
+    if (w.__f4eReady) {
+      setEntered(true);
+      return;
+    }
+    const on = () => setEntered(true);
+    window.addEventListener("f4e:ready", on);
+    // fallback por si el evento ya pasó
+    const t = setTimeout(() => setEntered(true), 4000);
+    return () => {
+      window.removeEventListener("f4e:ready", on);
+      clearTimeout(t);
+    };
+  }, []);
 
   // Parallax de scroll (capa externa, vía variable CSS) +
   // seguimiento del cursor con deslizamiento suave (lerp) en la capa interna.
@@ -78,7 +96,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <header id="inicio" className="hero" data-screen-label="Hero" ref={ref}>
+    <header
+      id="inicio"
+      className={`hero${entered ? " entered" : ""}`}
+      data-screen-label="Hero"
+      ref={ref}
+    >
       <div className="hero__bg" />
       <div className="hero__light" aria-hidden="true" />
 
@@ -100,16 +123,18 @@ export default function Hero() {
           </span>
         </p>
 
-        <div className="hero__bottle-wrap">
-          <div className="hero__bottle-mouse" ref={mouseRef}>
-            <div className="hero__bottle-float">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/assets/botella-qutec.png"
-                alt="Botella QUTEC — tinto Malbec / Syrah de Finca 4 Elementos"
-                className="hero__bottle"
-              />
-              <span className="hero__bottle-shine" aria-hidden="true" />
+        <div className="hero__bottle-enter">
+          <div className="hero__bottle-wrap">
+            <div className="hero__bottle-mouse" ref={mouseRef}>
+              <div className="hero__bottle-float">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/assets/botella-qutec.png"
+                  alt="Botella QUTEC — tinto Malbec / Syrah de Finca 4 Elementos"
+                  className="hero__bottle"
+                />
+                <span className="hero__bottle-shine" aria-hidden="true" />
+              </div>
             </div>
           </div>
         </div>

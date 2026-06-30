@@ -27,11 +27,17 @@ export default function CustomCursor() {
       my = e.clientY;
       el.style.opacity = "1";
     };
+    const labelEl = el.querySelector(".cursor__label") as HTMLElement | null;
     const onOver = (e: MouseEvent) => {
-      const t = (e.target as HTMLElement)?.closest(
+      const target = e.target as HTMLElement;
+      const t = target?.closest(
         "a,button,[role='button'],.winelist li,.mleaf,.mleg,[data-cursor]"
       );
       el.classList.toggle("is-hover", !!t);
+      const labeled = target?.closest("[data-cursor-label]") as HTMLElement | null;
+      const label = labeled?.dataset.cursorLabel || "";
+      el.classList.toggle("has-label", !!label);
+      if (labelEl) labelEl.textContent = label;
     };
     const onLeave = () => {
       el.style.opacity = "0";
@@ -58,5 +64,9 @@ export default function CustomCursor() {
     };
   }, []);
 
-  return <div ref={ref} className="cursor" aria-hidden="true" />;
+  return (
+    <div ref={ref} className="cursor" aria-hidden="true">
+      <span className="cursor__label" />
+    </div>
+  );
 }

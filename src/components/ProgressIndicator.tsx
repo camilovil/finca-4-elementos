@@ -41,8 +41,12 @@ export default function ProgressIndicator() {
   }, []);
 
   return (
-    <div className={`progress${deep ? " hidden" : ""}`}>
-      {steps.map((s, i) => (
+    <>
+      <div className="scrollbar" aria-hidden="true">
+        <span style={{ transform: `scaleX(${progress / 100})` }} />
+      </div>
+      <div className={`progress${deep ? " hidden" : ""}`}>
+        {steps.map((s, i) => (
         <span
           key={s.id}
           className="progress__step-wrap"
@@ -56,8 +60,9 @@ export default function ProgressIndicator() {
           </span>
         </span>
       ))}
-      <span className="progress__divider" />
-      <span className="progress__pct serif">{progress}%</span>
-    </div>
+        <span className="progress__divider" />
+        <span className="progress__pct serif">{progress}%</span>
+      </div>
+    </>
   );
 }

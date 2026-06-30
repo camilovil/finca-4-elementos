@@ -36,8 +36,14 @@ export default function Preloader() {
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const fireReady = () => {
+      (window as unknown as { __f4eReady?: boolean }).__f4eReady = true;
+      window.dispatchEvent(new Event("f4e:ready"));
+    };
+
     if (sessionStorage.getItem("f4e-intro")) {
       setSkip(true);
+      fireReady();
       return;
     }
     setSkip(false);
@@ -58,6 +64,7 @@ export default function Preloader() {
       else {
         setTimeout(() => {
           setDone(true);
+          fireReady();
           setTimeout(() => {
             document.body.style.overflow = "";
           }, 900);

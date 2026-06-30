@@ -127,6 +127,7 @@ export default function MandalaElementos() {
                 <g
                   key={i}
                   data-leaf={i}
+                  data-cursor-label="tocá"
                   className={`mleaf${active === i ? " active" : ""}`}
                   style={{ ["--c" as string]: dt.color }}
                   tabIndex={0}

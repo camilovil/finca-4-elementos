@@ -39,7 +39,7 @@ export default function Footer() {
           <span className="footer__label">Contacto</span>
           <div className="footer__col-links">
             <a href={`mailto:${site.email}`}>{site.email}</a>
-            <span className="footer__muted">Valle de Uco · Mendoza</span>
+            <span className="footer__muted">San Rafael · Mendoza</span>
           </div>
         </div>
       </div>

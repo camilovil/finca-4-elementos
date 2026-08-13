@@ -3,7 +3,7 @@
 export const site = {
   name: "Finca 4 Elementos",
   tagline: "«No hacemos vino. Dejamos que la tierra hable.»",
-  location: "Valle de Uco · Mendoza, Argentina",
+  location: "San Rafael · Mendoza, Argentina",
   email: "hola@finca4elementos.com",
   kicker: "Bodega boutique · Mendoza, Argentina",
 };

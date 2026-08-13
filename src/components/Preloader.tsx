@@ -93,7 +93,7 @@ export default function Preloader() {
       <div className="cf__eyebrow">Mendoza · Argentina</div>
 
       <div className="cf__stage">
-        <span className="cf__label cf__label--l">Valle de Uco</span>
+        <span className="cf__label cf__label--l">San Rafael</span>
         <span className="cf__label cf__label--c">Una&nbsp;tierra</span>
         <span className="cf__label cf__label--r">Sus vinos</span>
 

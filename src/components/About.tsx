@@ -37,7 +37,7 @@ export default function About() {
         <div className="split__photo split__photo--soil split__photo--first">
           <ParallaxPhoto
             src="/photos/vendimia-uvas.webp"
-            alt="Uvas recién cosechadas en bins, con olivos y viñedo de fondo en el Valle de Uco"
+            alt="Uvas recién cosechadas en bins, con olivos y viñedo de fondo en San Rafael"
           />
         </div>
         <Reveal className="split__text" delay={120}>

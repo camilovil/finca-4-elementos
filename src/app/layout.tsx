@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://finca4elementos.com"),
   title: "Finca 4 Elementos · Bodega boutique de baja intervención · Mendoza",
   description:
-    "Bodega boutique de vinos orgánicos y de baja intervención en el Valle de Uco, Mendoza. Agricultura regenerativa, levaduras nativas y producción artesanal limitada. TE, QUTEC y más.",
+    "Bodega boutique de vinos orgánicos y de baja intervención en San Rafael, Mendoza. Agricultura regenerativa, levaduras nativas y producción artesanal limitada. TE, QUTEC y más.",
   keywords: [
     "vino natural",
     "baja intervención",
     "Mendoza",
-    "Valle de Uco",
+    "San Rafael",
     "agricultura regenerativa",
     "bodega boutique",
     "vino orgánico",

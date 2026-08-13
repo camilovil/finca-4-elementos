@@ -90,7 +90,7 @@ export default function FullscreenMenu({
 
       <div className="fsmenu__foot">
         <span>hola@finca4elementos.com</span>
-        <span>Valle de Uco · Mendoza</span>
+        <span>San Rafael · Mendoza</span>
       </div>
     </div>
   );

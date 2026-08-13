@@ -15,7 +15,7 @@ import ProgressIndicator from "@/components/ProgressIndicator";
 
 const marqueeItems = [
   "Vinos de Finca 4 Elementos",
-  "Mendoza · Valle de Uco",
+  "Mendoza · San Rafael",
   "Baja intervención",
   "Botellas numeradas a mano",
   "Edición limitada",

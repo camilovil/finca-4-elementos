@@ -9,7 +9,7 @@ export default function Territorio() {
       {/* intro de terruño */}
       <div className="territorio__intro">
         <Reveal>
-          <span className="eyebrow">Territorio · Valle de Uco</span>
+          <span className="eyebrow">Territorio · San Rafael</span>
         </Reveal>
         <ScrollWords
           className="territorio__head"
@@ -26,7 +26,7 @@ export default function Territorio() {
         />
         <Reveal className="territorio__copy" delay={120}>
           <p>
-            A más de 1.000 metros sobre el nivel del mar, en el Valle de Uco, el
+            A más de 1.000 metros sobre el nivel del mar, en San Rafael, el
             día arde y la noche enfría. Esa amplitud —sol de altura y deshielo de
             los Andes— moldea suelos pedregosos y vivos donde la vid encuentra
             tensión, frescura y carácter.
@@ -38,11 +38,11 @@ export default function Territorio() {
         </Reveal>
       </div>
 
-      {/* paisaje del Valle de Uco */}
+      {/* paisaje de San Rafael */}
       <div className="territorio__photo">
         <ParallaxPhoto
           src="/photos/finca-vinedo.webp"
-          alt="Viñedo de Finca 4 Elementos en el Valle de Uco, con la casa de la finca y cielo despejado"
+          alt="Viñedo de Finca 4 Elementos en San Rafael, con la casa de la finca y cielo despejado"
         />
       </div>
 

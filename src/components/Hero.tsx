@@ -60,9 +60,15 @@ export default function Hero() {
     let active = false;
     let rafMouse = 0;
 
+    let hasMouse = false;
     const onMove = (e: MouseEvent) => {
       tx = (e.clientX / window.innerWidth) * 2 - 1;
       ty = (e.clientY / window.innerHeight) * 2 - 1;
+      if (!hasMouse) {
+        // con mouse, el brillo y la sombra siguen al cursor (la luz)
+        hasMouse = true;
+        host.classList.add("has-mouse");
+      }
       if (!active) {
         active = true;
         rafMouse = requestAnimationFrame(loop);
@@ -75,9 +81,12 @@ export default function Hero() {
       cy += (ty - cy) * 0.07;
       mouseEl.style.transform =
         `translate3d(${(cx * 26).toFixed(2)}px, ${(cy * 16).toFixed(2)}px, 0)` +
-        ` rotateX(${(-cy * 4).toFixed(2)}deg)` +
-        ` rotateY(${(cx * 7).toFixed(2)}deg)` +
+        ` rotateX(${(-cy * 6).toFixed(2)}deg)` +
+        ` rotateY(${(cx * 16).toFixed(2)}deg)` +
         ` rotateZ(${(cx * 3).toFixed(2)}deg)`;
+      // posición de la "luz": mueve sombra proyectada, reflejo y brillo
+      host.style.setProperty("--mx", cx.toFixed(3));
+      host.style.setProperty("--my", cy.toFixed(3));
       if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
         rafMouse = requestAnimationFrame(loop);
       } else {
@@ -125,11 +134,20 @@ export default function Hero() {
 
         <div className="hero__bottle-enter">
           <div className="hero__bottle-wrap">
+            {/* reflejo de color y sombra que la botella proyecta sobre la página */}
+            <span className="hero__bottle-glow" aria-hidden="true" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/assets/botella-qutec.webp"
+              alt=""
+              aria-hidden="true"
+              className="hero__bottle-cast"
+            />
             <div className="hero__bottle-mouse" ref={mouseRef}>
               <div className="hero__bottle-float">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/assets/botella-qutec.png"
+                  src="/assets/botella-qutec.webp"
                   alt="Botella QUTEC — tinto Malbec / Syrah de Finca 4 Elementos"
                   className="hero__bottle"
                 />
@@ -140,7 +158,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* wordmark gigante a sangre */}
+      {/* wordmark gigante: fijo abajo durante todo el scroll, detrás del contenido */}
       <div className="hero__wordmark" aria-hidden="true">
         <span>4&nbsp;ELEMENTOS</span>
       </div>

@@ -11,6 +11,9 @@ export default function Footer() {
 
   return (
     <footer className="footer">
+      <div className="footer__wordmark" aria-hidden="true">
+        4&nbsp;ELEMENTOS
+      </div>
       <div className="footer__grid">
         <div>
           <div className="footer__brand">

@@ -15,9 +15,9 @@ const BARBS = [
 
 const DATA = [
   { el: "Tierra", wine: "Te", color: "#C68A3D", angle: 45 },
-  { el: "Agua", wine: "Caha", color: "#8B9A8B", angle: 135 },
+  { el: "Agua", wine: "Caha", color: "#4F7673", angle: 135 },
   { el: "Fuego", wine: "Qutec", color: "#BD7A6B", angle: 225 },
-  { el: "Aire", wine: "Homtec", color: "#BBC2A6", angle: 315 },
+  { el: "Aire", wine: "Homtec", color: "#6F7A55", angle: 315 },
 ];
 
 const clamp = (v: number) => (v < 0 ? 0 : v > 1 ? 1 : v);
@@ -107,7 +107,7 @@ export default function MandalaElementos() {
               cy="0"
               r="188"
               fill="none"
-              stroke="#C9A24B"
+              stroke="#9A7B3A"
               strokeWidth="1"
               strokeLinecap="round"
               pathLength={1}
@@ -181,7 +181,7 @@ export default function MandalaElementos() {
                 cx="0"
                 cy="0"
                 r="5"
-                fill="#C9A24B"
+                fill="#9A7B3A"
                 style={{ opacity: 0 }}
               />
             </g>

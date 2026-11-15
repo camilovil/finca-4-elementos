@@ -92,21 +92,21 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 24px 44px;
-  color: var(--cream);
-  /* barra translúcida oscura con desenfoque (glassmorphism) */
-  background: rgba(26, 25, 21, 0.65);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  border-bottom: 1px solid rgba(237, 233, 221, 0.18);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  color: var(--ink);
+  /* barra clara apenas esmerilada: separa el header sin oscurecerlo */
+  background: rgba(183, 188, 173, 0.5);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid rgba(30, 29, 26, 0.08);
+  box-shadow: 0 10px 28px -18px rgba(30, 29, 26, 0.35);
   transition: padding 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
     background 0.5s ease, box-shadow 0.5s ease;
 }
 .nav.scrolled {
   padding-top: 14px;
   padding-bottom: 14px;
-  background: rgba(26, 25, 21, 0.66);
-  box-shadow: 0 10px 30px -22px rgba(0, 0, 0, 0.7);
+  background: rgba(183, 188, 173, 0.72);
+  box-shadow: 0 12px 30px -16px rgba(30, 29, 26, 0.45);
 }
 .nav__brand {
   display: flex;
@@ -175,8 +175,8 @@ a {
 }
 .nav__burger span {
   display: block;
-  width: 26px;
-  height: 2px;
+  width: 34px;
+  height: 3px;
   background: currentColor;
   transition: transform 0.3s ease;
 }
@@ -227,7 +227,7 @@ a {
 }
 .fsmenu__item {
   position: relative;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: clamp(2rem, 6vw, 3.6rem);
   text-transform: uppercase;
   color: var(--ink-menu);
@@ -405,7 +405,7 @@ a {
   color: #3a352f;
 }
 .hero__tagline-strong {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: clamp(1.7rem, 4.4vw, 3.4rem);
   letter-spacing: 0.01em;
   line-height: 1.04;
@@ -416,7 +416,8 @@ a {
 .hero__bottle-wrap {
   position: relative;
   z-index: 3;
-  transform: translateY(calc(var(--scroll) * 0.04px));
+  /* la botella viene derecha; la inclinación se controla acá */
+  transform: translateY(calc(var(--scroll) * 0.04px)) rotate(-7deg);
   will-change: transform;
 }
 /* seguimiento del cursor (capa intermedia, JS) */
@@ -451,8 +452,8 @@ a {
     rgba(255, 255, 255, 0) 60%
   );
   background-size: 280% 100%;
-  -webkit-mask: url(/assets/botella-qutec.png) center / contain no-repeat;
-  mask: url(/assets/botella-qutec.png) center / contain no-repeat;
+  -webkit-mask: url(/assets/botella-qutec.webp) center / contain no-repeat;
+  mask: url(/assets/botella-qutec.webp) center / contain no-repeat;
   mix-blend-mode: screen;
   animation: f4shine 8s ease-in-out infinite;
 }
@@ -782,7 +783,7 @@ a {
 }
 /* énfasis condensado dentro de títulos serif (tipografía mixta editorial) */
 .display {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.005em;
@@ -1366,7 +1367,7 @@ a {
   justify-content: center;
 }
 .pwordmark__text {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: clamp(5rem, 18vw, 16rem);
   line-height: 0.8;
   text-transform: uppercase;
@@ -1525,7 +1526,7 @@ a {
   animation: f4reveal 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 .bottle__name {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 1;
   color: var(--cream);
@@ -1639,7 +1640,7 @@ a {
   transform: translateY(0);
 }
 .ehead__word--anton {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
@@ -1648,7 +1649,7 @@ a {
   color: var(--muted);
 }
 .ehead__word--gold {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   color: var(--gold);
@@ -1747,7 +1748,7 @@ a {
   gap: 4px;
 }
 .gphoto__name {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: 1.7rem;
   line-height: 1;
   text-transform: uppercase;
@@ -1805,7 +1806,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-anton), Impact, sans-serif;
   font-size: 2.1rem;
   text-transform: uppercase;
   color: var(--ink);
@@ -2218,10 +2219,10 @@ a {
 }
 .swords__w--anton,
 .swords__w--gold {
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-anton), Impact, sans-serif;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .swords__w--gold {
   color: var(--gold);
@@ -2484,8 +2485,8 @@ a {
 }
 .mandala__card-wine {
   margin-top: 5px;
-  font-family: var(--font-fraunces), Georgia, serif;
-  font-weight: 600;
+  font-family: var(--font-anton), Impact, sans-serif;
+  font-weight: 400;
   font-size: 2.1rem;
   line-height: 0.92;
   text-transform: uppercase;
@@ -2570,14 +2571,6 @@ a {
 .fsmenu__item,
 .hero__tagline-strong,
 .display,
-.pwordmark__text,
-.bottle__name,
-.ehead__word--anton,
-.ehead__word--gold,
-.gphoto__name,
-.shop__disc {
-  font-weight: 600;
-}
 .hero__wordmark span {
   font-weight: 700;
 }
@@ -2821,4 +2814,276 @@ a {
   .nav__links a:not(.nav__cta) {
     display: none;
   }
+}
+
+/* =====================================================================
+   PASADA "LIDIAEAMATO" — un solo fondo salvia, wordmark fijo durante
+   todo el scroll, hero con botella grande en 3D con sombra y reflejos.
+   ===================================================================== */
+
+/* el contenido forma una capa; el wordmark fijo queda detrás de todo */
+main {
+  position: relative;
+  z-index: 2;
+}
+.hero {
+  background: none;
+}
+.hero__wordmark {
+  position: fixed;
+  z-index: -1;
+  bottom: -1.2vw;
+}
+
+/* ---------- hero: frase arriba a la izquierda, botella protagonista ---------- */
+.hero__top {
+  top: 112px;
+}
+.hero__tagline {
+  top: 148px;
+  left: 44px;
+  transform: none;
+  text-align: left;
+  gap: 0;
+}
+.hero__tagline-it,
+.hero__tagline-strong {
+  font-family: var(--font-cormorant), serif;
+  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+  line-height: 1.15;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+.hero__bottle {
+  height: min(84vh, 800px);
+  /* sombra corta de contacto; la sombra larga es .hero__bottle-cast */
+  filter: drop-shadow(-6px 10px 14px rgba(30, 29, 26, 0.28));
+}
+/* inclinada al entrar; se endereza y gira sobre su eje al scrollear */
+.hero__bottle-wrap {
+  transform: perspective(1400px) translateY(calc(var(--scroll) * 0.04px))
+    rotate(calc(-13deg + min(var(--scroll) * 0.022deg, 13deg)))
+    rotateY(min(calc(var(--scroll) * 0.05deg), 32deg));
+}
+/* sombra proyectada sobre la página: silueta desenfocada que se corre
+   en sentido contrario al cursor (el cursor hace de fuente de luz) */
+.hero__bottle-cast {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.3;
+  filter: brightness(0) blur(22px);
+  transform: translate(
+      calc(54px - var(--mx, 0) * 46px),
+      calc(40px - var(--my, 0) * 26px)
+    )
+    scale(1.04);
+  will-change: transform;
+}
+/* reflejo: la luz que atraviesa el vino tiñe la página */
+.hero__bottle-glow {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 150%;
+  aspect-ratio: 1;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(150, 44, 40, 0.3),
+    rgba(189, 122, 107, 0.14) 45%,
+    rgba(189, 122, 107, 0) 100%
+  );
+  mix-blend-mode: multiply;
+  filter: blur(18px);
+  transform: translate(
+    calc(-50% + 22% - var(--mx, 0) * 16%),
+    calc(-50% + 12% - var(--my, 0) * 10%)
+  );
+  will-change: transform;
+}
+/* con mouse el brillo del vidrio sigue al cursor en vez de barrer solo */
+.hero.has-mouse .hero__bottle-shine {
+  animation: none;
+  background-position: calc(50% - var(--mx, 0) * 70%) 0;
+}
+/* entrada: la botella aparece girando sobre su eje */
+@keyframes f4bottleIn {
+  from {
+    opacity: 0;
+    transform: translateY(90px) rotateY(-80deg) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(0deg) scale(1);
+  }
+}
+.hero.entered .hero__bottle-enter {
+  animation-duration: 1.7s;
+}
+
+/* ---------- un solo fondo: fuera oliva y negro ---------- */
+.productos,
+.shop {
+  background: none;
+  border-top: none;
+}
+.pwordmark {
+  display: none;
+}
+
+/* mándala: fondo salvia opaco (tapa el wordmark mientras está fijada) */
+.mandala {
+  background: var(--bg);
+  color: var(--ink);
+}
+.mandala__pattern {
+  opacity: 0.1;
+}
+.mandala__num,
+.mandala__arrow {
+  color: var(--gold);
+}
+.mandala__kicker span:last-child,
+.mandala__it,
+.mandala__hint,
+.mandala__card-el,
+.mandala__scrollhint span:first-child {
+  color: var(--muted);
+}
+.mandala__title {
+  color: var(--ink);
+}
+.mleaf__ink {
+  stroke: var(--body);
+}
+.mleaf.active .mleaf__fill {
+  opacity: 0.3;
+}
+.mandala__label {
+  background: radial-gradient(
+    circle,
+    rgba(183, 188, 173, 0.95) 40%,
+    rgba(183, 188, 173, 0) 74%
+  );
+}
+.mleg {
+  color: var(--body);
+}
+.mleg.active {
+  color: var(--ink);
+}
+.mleg.dim {
+  color: rgba(30, 29, 26, 0.32);
+}
+
+/* contacto: texto tinta sobre salvia */
+.cta {
+  background: none;
+  color: var(--ink);
+}
+.cta__bg {
+  display: none;
+}
+.cta__eyebrow {
+  color: var(--gold);
+}
+.cta__lead {
+  color: var(--body);
+}
+.cta__fine {
+  color: var(--muted);
+}
+
+/* footer crema: sube y tapa el wordmark fijo, que "aterriza" acá */
+.footer {
+  background: var(--cream);
+  color: var(--body);
+  padding-top: 0;
+}
+.footer__wordmark {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(4rem, 21vw, 19rem);
+  line-height: 0.74;
+  letter-spacing: -0.01em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--muted);
+  margin: 0 -44px;
+  padding: clamp(60px, 9vw, 130px) 0 clamp(40px, 5vw, 70px);
+  overflow: hidden;
+}
+.footer__brand span {
+  color: var(--ink);
+}
+.footer__label {
+  color: var(--muted);
+}
+.footer__bottom {
+  border-top-color: var(--line);
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .hero__top {
+    top: 100px;
+    left: 22px;
+  }
+  .hero__tagline {
+    top: 132px;
+    left: 22px;
+  }
+  .hero__bottle {
+    height: min(62vh, 520px);
+  }
+  .footer__wordmark {
+    margin: 0 -22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__bottle-wrap {
+    transform: rotate(-13deg);
+  }
+}
+
+/* wordmark entero dentro del ancho de pantalla (como el de referencia) */
+.hero__wordmark span,
+.footer__wordmark {
+  font-size: 13vw;
+  line-height: 0.8;
+}
+/* espacio entre la barra y la frase del hero */
+.hero__top {
+  top: 128px;
+}
+.hero__tagline {
+  top: 162px;
+}
+/* lista de vinos en condensada pesada */
+.winelist__name {
+  font-family: var(--font-anton), Impact, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  line-height: 1;
+}
+@media (max-width: 760px) {
+  .hero__top {
+    top: 104px;
+  }
+  .hero__tagline {
+    top: 136px;
+  }
+}
+.winelist li.available .winelist__name,
+.winelist li.soon .winelist__name {
+  font-weight: 400;
 }
